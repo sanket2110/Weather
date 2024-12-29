@@ -3,16 +3,16 @@ import axios from 'axios';
 
 const WeatherApp = () => {
   const [weatherData, setWeatherData] = useState(null);
-  const [location, setLocation] = useState('New York');  // Default location
+  const [location, setLocation] = useState('New York'); 
   const [time, setTime] = useState(new Date().toLocaleTimeString());
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  // OpenWeatherMap API key (sign up for free at https://openweathermap.org/api)
+  
   const apiKey = '5929f060682499490a44d99f39cd8';
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${location}&appid=${apiKey}&units=metric`;
 
-  // Fetch weather data
+  
   useEffect(() => {
     setLoading(true);
     axios
@@ -27,13 +27,13 @@ const WeatherApp = () => {
       });
   }, [location]);
 
-  // Update the current time every second
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setTime(new Date().toLocaleTimeString());
     }, 1000);
 
-    return () => clearInterval(interval);  // Clean up the interval on component unmount
+    return () => clearInterval(interval); 
   }, []);
 
   const handleLocationChange = (event) => {
